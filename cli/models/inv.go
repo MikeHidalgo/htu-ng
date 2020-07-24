@@ -10,7 +10,7 @@ import (
 
 var commands [][]string
 
-func SetCommands() *commands {
+func SetCommands() commands {
 
     cpu := []string{"dmidecode", "-t", "processor"}
     ram := []string{"dmidecode", "-t", "17"}
@@ -26,7 +26,7 @@ func SetCommands() *commands {
     commands = append(commands, bio)
     commands = append(commands, pwr)
 
-    return &commands
+    return commands
 }
 
 func RunCommand(c string, a []string) []byte {
