@@ -10,7 +10,7 @@ import (
 
 var commands [][]string
 
-func SetCommands() commands {
+func SetCommands() [][]string {
 
     cpu := []string{"dmidecode", "-t", "processor"}
     ram := []string{"dmidecode", "-t", "17"}
