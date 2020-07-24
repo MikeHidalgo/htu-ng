@@ -9,7 +9,9 @@ import (
 
 func Summary() {
 
-    init := "CREATE TABLE IF NOT EXISTS system (id INTEGER, component TEXT PRIMARY KEY, output TEXT)"
+    fmt.Println("summary called")
+
+    init := "CREATE TABLE IF NOT EXISTS system (id INTEGER PRIMARY KEY, component TEXT, output TEXT)"
 
     database, _ := db.DB("./htu.db")
     statement, _ := database.Prepare(init)
