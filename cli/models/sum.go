@@ -14,4 +14,16 @@ func Summary() {
 
     statement, _ = database.Prepare("INSERT INTO system (component, output) VALUES (?, ?)")
     statement.Exec("System Information", RunCommand("dmidecode", []string{"-t", "1"}))
+
+    rows, _ := database.Query("SELECT id, component, output FROM system")
+    var id int
+    var component string
+    var output string
+    for rows.Next() {
+        rows.Scan(&id, &component, &output)
+        fmt.Println("")
+        fmt.Println("# .............................")
+        fmt.Println(strconv.Itoa(id) + ": " + component)
+        fmt.Println(output)
+    }
 }
