@@ -6,28 +6,20 @@ import (
     "strconv"
 
     "htu-ng/cli/db"
-    "htu-ng/cli/models"
 )
 
+var commands [][]string
 
-type Commands struct {
-    CPU  []string
-    RAM  []string
-    SYS  []string
-    CHA  []string
-    BIO  []string
-    PWR  []string
-}
+func SetCommands() *commands {
 
-func SetCommands() *Commands {
-    return &Command{
-        CPU: {"dmidecode", "-t", "processor"},
-        RAM: {"dmidecode", "-t", "17"},
-        SYS: {"dmidecode", "-t", "system"},
-        CHA: {"dmidecode", "-t", "chassis"},
-        BIO: {"dmidecode", "-t", "bios"},
-        PWR: {"dmidecode", "-t", "39"},
-    }
+    commands = append(commands, {"dmidecode", "-t", "processor"})
+    commands = append(commands, {"dmidecode", "-t", "17"})
+    commands = append(commands, {"dmidecode", "-t", "system"})
+    commands = append(commands, {"dmidecode", "-t", "chassis"})
+    commands = append(commands, {"dmidecode", "-t", "bios"})
+    commands = append(commands, {"dmidecode", "-t", "39"})
+
+    return &commands
 }
 
 func RunCommand(c string, a []string) []byte {
@@ -37,7 +29,6 @@ func RunCommand(c string, a []string) []byte {
         fmt.Println( "Error:", err )
     }
 
-    // fmt.Printf("%s\n", string(out))
     return out
 }
 
@@ -46,9 +37,10 @@ func INV() {
     database, _ := db.DB("./htu.db")
     statement, _ := database.Prepare("CREATE TABLE IF NOT EXISTS commands (id INTEGER PRIMARY KEY, command TEXT, output TEXT)")
     statement.Exec()
+
     statement, _ = database.Prepare("INSERT INTO commands (command, output) VALUES (?, ?)")
 
-    for _, cmd := range commands {
+    for _, cmd := range SetCommands() {
         statement.Exec(cmd[2], RunCommand(cmd[0], cmd[1:]))
     }
 
