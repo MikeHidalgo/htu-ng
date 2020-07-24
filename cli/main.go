@@ -14,7 +14,8 @@
 
 package main
 
-import "github.com/htu/cli/cmd"
+// import "github.com/htu/cli/cmd"
+import "htu-ng/cli/cmd"
 
 func main() {
 	cmd.Execute()

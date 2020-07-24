@@ -12,12 +12,19 @@ var commands [][]string
 
 func SetCommands() *commands {
 
-    commands = append(commands, {"dmidecode", "-t", "processor"})
-    commands = append(commands, {"dmidecode", "-t", "17"})
-    commands = append(commands, {"dmidecode", "-t", "system"})
-    commands = append(commands, {"dmidecode", "-t", "chassis"})
-    commands = append(commands, {"dmidecode", "-t", "bios"})
-    commands = append(commands, {"dmidecode", "-t", "39"})
+    cpu := []string{"dmidecode", "-t", "processor"}
+    ram := []string{"dmidecode", "-t", "17"}
+    sys := []string{"dmidecode", "-t", "system"}
+    cha := []string{"dmidecode", "-t", "chassis"}
+    bio := []string{"dmidecode", "-t", "bios"}
+    pwr := []string{"dmidecode", "-t", "39"}
+
+    commands = append(commands, cpu)
+    commands = append(commands, ram)
+    commands = append(commands, sys)
+    commands = append(commands, cha)
+    commands = append(commands, bio)
+    commands = append(commands, pwr)
 
     return &commands
 }
