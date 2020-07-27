@@ -65,8 +65,7 @@ func DMI() {
     statement, _ = database.Prepare("INSERT INTO dmi (id, component, output) VALUES (?, ?, ?)")
 
     for code, title := range CodeTable() {
-        a := ["-t", strconv.Itoa(code)]
-        statement.Exec(code, title, RunCommand("dmidecode", a))
+        statement.Exec(code, title, RunCommand("dmidecode", [2]string{"-t", strconv.Itoa(code)}))
     }
 
     rows, _ := database.Query("SELECT id, component, output FROM dmi")
