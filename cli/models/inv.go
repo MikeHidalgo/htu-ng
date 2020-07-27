@@ -29,16 +29,6 @@ func SetCommands() [][]string {
     return commands
 }
 
-func RunCommand(c string, a []string) []byte {
-
-    out, err := exec.Command(c, a...).CombinedOutput()
-    if err != nil {
-        fmt.Println( "Error:", err )
-    }
-
-    return out
-}
-
 func INV() {
 
     database, _ := db.DB("./htu.db")
