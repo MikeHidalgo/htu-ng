@@ -2,7 +2,6 @@ package models
 
 import (
     "fmt"
-    "os/exec"
     "strconv"
 
     "htu-ng/cli/db"
