@@ -27,7 +27,7 @@ var inventoryCmd = &cobra.Command{
 	Long: `A longer description that spans multiple lines and likely contains examples`,
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("inventory called")
-		models.INV()
+		models.DMI()
 	},
 }
 
