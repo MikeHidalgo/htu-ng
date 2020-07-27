@@ -4,7 +4,8 @@ import (
     "database/sql"
     _ "github.com/mattn/go-sqlite3"
 )
+var path = "./htu.db"
 
-func DB(path string) (*sql.DB, error) {
+func Init() (*sql.DB, error) {
     return sql.Open("sqlite3", path)
 }

@@ -11,7 +11,7 @@ func Summary() {
 
     init := "CREATE TABLE IF NOT EXISTS system (id INTEGER PRIMARY KEY, component TEXT, output TEXT)"
 
-    database, _ := db.DB("./htu.db")
+    database, _ := db.Init()
     statement, _ := database.Prepare(init)
     statement.Exec()
 
