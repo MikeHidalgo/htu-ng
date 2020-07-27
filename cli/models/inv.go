@@ -30,7 +30,7 @@ func SetCommands() [][]string {
 
 func INV() {
 
-    database, _ := db.DB("./htu.db")
+    database, _ := db.Init()
     statement, _ := database.Prepare("CREATE TABLE IF NOT EXISTS commands (id INTEGER PRIMARY KEY, command TEXT, output TEXT)")
     statement.Exec()
 
