@@ -18,12 +18,7 @@ func SetCommands() [][]string {
     bio := []string{"dmidecode", "-t", "bios"}
     pwr := []string{"dmidecode", "-t", "39"}
 
-    commands = append(commands, cpu)
-    commands = append(commands, ram)
-    commands = append(commands, sys)
-    commands = append(commands, cha)
-    commands = append(commands, bio)
-    commands = append(commands, pwr)
+    commands = append(commands, cpu, ram, sys, cha, bio, pwr)
 
     return commands
 }
